@@ -1,5 +1,5 @@
 # INet
-We want to identify general information by building a **Consensus Network** and then to obtain  **case-Specific Networks** one for each layer with the information present only in that layer and not in all the others.
+We want to identify general information by building a **Consensus Network** and then to obtain  **Case-Specific Networks** one for each layer with the information present only in that layer and not in all the others.
 
 
 <p align="center">
@@ -8,8 +8,9 @@ We want to identify general information by building a **Consensus Network** and 
 
 
 
-- **ConsensusAlgorithm** to create the consensus network
-- **SpecificNet** to create the case specific network
+- **ConsensusAlgorithm** to create the Consensus Network
+- **SpecificNet** to create the Case Specific Network
+
 - **ThresholdConsensus** to change the threshold of the consensus from the similar layer after the algorithm
 - **MeanJaccardWeighted** to see how distant are the layers at the beginning
 
