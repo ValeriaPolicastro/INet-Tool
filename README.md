@@ -8,8 +8,8 @@ We want to identify general information by building a **Consensus Network** and 
 
 
 
-- **ConsensusAlgorithm** to create the Consensus Network
-- **SpecificNet** to create the Case Specific Network
+- **ConsensusAlgorithm** to create the _Consensus Network_
+- **SpecificNet** to create the _Case Specific Network_
 
 - **ThresholdConsensus** to change the threshold of the consensus from the similar layer after the algorithm
 - **MeanJaccardWeighted** to see how distant are the layers at the beginning
