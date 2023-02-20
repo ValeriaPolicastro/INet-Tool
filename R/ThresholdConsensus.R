@@ -25,7 +25,7 @@
 #' my_Consensus <- ConsensusAlgorithm(adjMatL=my_AdjMatrices, tolerance=0.1,
 #' theta=0.04, ThresholdConsensus=0.5, nitermax=50,ncores=2)
 #' ThresholdConsensus(adjMatL= my_AdjMatrices,
-#' graphsL=my_Consensus$similarGraphs, ThresholdConsensus=0)
+#' graphsL=my_Consensus$similarGraphs, ThresholdConsensus=0.5)
 #'
 
 
