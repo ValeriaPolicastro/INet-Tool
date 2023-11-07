@@ -1,0 +1,69 @@
+---
+title: "INet"
+subtitle: "Network Integration"
+author: "Valeria Policastro et al."
+date: "`r Sys.Date()`"
+vignette: >
+  %\VignetteIndexEntry{INet}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+output:
+  knitr:::html_vignette:
+    toc: yes
+    toc_depth: 2
+---
+
+
+# INet
+
+To answer the integration problem, we constructed the \texttt{INet Algorithm}, assuming the presence of a structure underneath the different networks with some similarities that we want to pull out. We generate a \texttt{Consensus Network} to give common information present underneath the different layers and a global view of the actors which play a fundamental role in the phenomenon of interest. In addition, the algorithm constructs a \texttt{Case Specific Network} for each network containing peculiar information of the single data type not present in all the others.
+
+
+# INet package
+```{r, library}
+library(INet)
+```
+
+# Simulated data construction
+```{r, load dataset}
+ gI <- igraph::sample_pa(n=10,directed=FALSE)
+ igraph::E(gI)$weight <- runif(igraph::ecount(gI),0.5,1)
+ gII <- igraph::sample_pa(n=10,directed=FALSE)
+ igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
+ graphsList <- list(gI,gII)
+```
+
+# Pre Analysis
+```{r}
+
+densityNet(graphsList)
+JWmatrix(graphsList)
+JWmean(graphsList)
+```
+
+
+
+# Consensus network
+
+A list of weighted adjacency matrices is needed. 
+The nodes should be the same in all the matrices.
+
+```{r}
+ MatI <- igraph::as_adjacency_matrix(graph= gI,attr = "weight")
+ MatII <- igraph::as_adjacency_matrix( graph= gII, attr = "weight")
+ my_AdjMatrices <- list(MatI,MatII)
+```
+
+
+To construct the consensus network
+```{r, consensus_function}
+my_Consensus <- consensusNet(adjMatL=my_AdjMatrices, tolerance=0.1, theta=0.04, ThresholdConsensus=0.01, nitermax=50,ncores=2)
+ my_Consensus
+```
+
+
+
+# Specific Network
+```{r, specific-function}
+specificNet(graphsL=graphsList,graphConsensus=my_Consensus$graphConsensus)
+```
