@@ -1,4 +1,4 @@
-#' JaccardWeightedMatrixDistance
+#' JWmatrix
 #'
 #' @description Jaccard Weighted Matrix Distance between all the graphs in
 #' pairs.
@@ -16,9 +16,9 @@
 #'
 #'
 #' graphsList <- list(gI,gII)
-#' JaccardWeightedMatrixDistance(graphsL=graphsList)
+#' JWmatrix(graphsL=graphsList)
 #'
-JaccardWeightedMatrixDistance <- function(graphsL)
+JWmatrix <- function(graphsL)
 {
 
     #To check if the names of the nodes are the same

@@ -1,7 +1,7 @@
-#' Threshold Consensus
+#' thresholdNet
 #'
-#' @description to recontract the Consensus Network with different Thresholding
-#' after the INet algorithm starting from the similar graphs.
+#' @description The function reconstructs the Consensus Network with different
+#' Thresholding after the ConsensusNet function starting from similar graphs.
 #' @param adjMatL list of weighted adjacency symmetric matrix where all the
 #' nodes are in all the networks in the same order.
 #' @param graphsL the list of similarGraphs output of ConsensusAlgorithm
@@ -22,14 +22,14 @@
 #' MatII <- igraph::as_adjacency_matrix( graph= gII, attr = "weight")
 #' my_AdjMatrices <- list(MatI,MatII)
 #'
-#' my_Consensus <- ConsensusAlgorithm(adjMatL=my_AdjMatrices, tolerance=0.1,
+#' my_Consensus <- consensusNet(adjMatL=my_AdjMatrices, tolerance=0.1,
 #' theta=0.04, ThresholdConsensus=0.5, nitermax=50,ncores=2)
-#' ThresholdConsensus(adjMatL= my_AdjMatrices,
+#' thresholdNet(adjMatL= my_AdjMatrices,
 #' graphsL=my_Consensus$similarGraphs, ThresholdConsensus=0.5)
 #'
 
 
-ThresholdConsensus <- function (adjMatL, graphsL, ThresholdConsensus=0.5)
+thresholdNet <- function (adjMatL, graphsL, ThresholdConsensus=0.5)
 
 
 {

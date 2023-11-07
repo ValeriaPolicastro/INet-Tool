@@ -1,4 +1,4 @@
-#' MeanJaccardWeighted
+#' JWmean
 #'
 #' @description Jaccard Weighted Mean Distance to understand how different are
 #' the layers.
@@ -16,8 +16,8 @@
 #'
 #'
 #' graphsList <- list(gI,gII)
-#' MeanJaccardWeighted(graphsL=graphsList)
-MeanJaccardWeighted <- function(graphsL)
+#' JWmean(graphsL=graphsList)
+JWmean <- function(graphsL)
 {
 
 

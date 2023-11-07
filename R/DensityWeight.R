@@ -1,9 +1,8 @@
-#' DensityWeight
+#' densityNet
 #'
-#' @description density plot of the mean of the weights of different graphs. It
-#' can be used to search the final Threshold for the Consensus Network
-#' construction from the similar networks (output "similarGraphs" of the
-#' ConsensusAlgorithm function, default Threshold is 0.5).
+#' @description The function creates a density plot of the different graphs mean
+#' weights. It can be used to search the final Threshold for the Consensus
+#' Network starting from similar networks.
 #' @param graphsL the list of weighted graphs in igraph format.
 #'
 #' @return
@@ -21,11 +20,11 @@
 #'
 #' graphsList <- list(gI,gII)
 #'
-#' DensityWeight(graphsL=graphsList)
+#' densityNet(graphsL=graphsList)
 #'
 
 
-DensityWeight <- function (graphsL)
+densityNet <- function (graphsL)
 
 
 {

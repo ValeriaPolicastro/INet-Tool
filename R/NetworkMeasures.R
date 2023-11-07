@@ -1,4 +1,4 @@
-#' NetworksMeasures
+#' measuresNet
 #'
 #' @description graphs and nodes measures to analyse all the layers in one shot.
 #' @param graphsL a list of graphs as igraphs objects.
@@ -15,9 +15,9 @@
 #' gII <- igraph::sample_pa(n=10,directed=FALSE)
 #' igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
 #' graphsList <- list(gI,gII)
-#' NetworksMeasures(graphsL=graphsList, NodesMeasures=TRUE)
+#' measuresNet(graphsL=graphsList, NodesMeasures=TRUE)
 #'
-NetworksMeasures <- function(graphsL, NodesMeasures=TRUE)
+measuresNet <- function(graphsL, NodesMeasures=TRUE)
 {
 
     MeasuresGraphs <- vector(mode = "list", length = length(graphsL))

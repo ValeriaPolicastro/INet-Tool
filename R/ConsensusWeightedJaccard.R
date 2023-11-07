@@ -1,6 +1,6 @@
-#' ConsensusAlgorithm
+#' consensusNet
 #'
-#' @description The function computes the INet Algorithm for the constuction of
+#' @description The function computes the INet Algorithm for the construction of
 #' a Consensus Network.
 #'
 #' @param adjMatL list of weighted adjacency matrix with the SAME nodes in rows
@@ -36,11 +36,11 @@
 #'
 #' my_AdjMatrices <- list(MatI,MatII)
 #'
-#' ConsensusAlgorithm(adjMatL=my_AdjMatrices, tolerance=0.1,
+#' consensusNet(adjMatL=my_AdjMatrices, tolerance=0.1,
 #' theta=0.04, ThresholdConsensus=0.5, nitermax=50,ncores=2)
 
 
-ConsensusAlgorithm <- function (adjMatL, tolerance=0.1,theta=0.04,
+consensusNet <- function (adjMatL, tolerance=0.1,theta=0.04,
                                 ThresholdConsensus=0.5,nitermax=50,
                                 ncores=2)
 

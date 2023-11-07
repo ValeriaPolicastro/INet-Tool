@@ -6,8 +6,7 @@ Maintainer: Valeria Policastro <valeria.policastro@gmail.com>
 Description: It constructs a Consensus Network which identifies the general information of all the layers and Specific Networks for each layer with the information present only in that layer and not in all the others.
 License: MIT + file LICENSE
 Encoding: UTF-8
-LazyData: true
-RoxygenNote: 7.2.0
+RoxygenNote: 7.2.3
 Imports:
     igraph,
     datastructures,
