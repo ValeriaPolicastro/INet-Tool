@@ -5,7 +5,7 @@ We want to identify general information by building a **Consensus Network** and 
 
 <p align="center">
 
-<img src="https://github.com/ValeriaPolicastro/Images/blob/master/images/Idea.png" width="500" height="170"/>
+<img src="https://github.com/ValeriaPolicastro/Images/blob/master/images/Idea.png" width="480" height="170"/>
 
 </p>
 
