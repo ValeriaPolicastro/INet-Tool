@@ -1,4 +1,4 @@
-# INet <img align= "right" src="https://github.com/ValeriaPolicastro/Paper-Robin/blob/master/images/logoINet.png" width="100" height="100" />
+# INet <img align= "right" src="https://github.com/ValeriaPolicastro/Paper-Robin/blob/master/images/logoINet.png" width="150" height="150" />
 
 We want to identify general information by building a **Consensus Network** and then to obtain  **Case-Specific Networks** one for each layer with the information present only in that layer and not in all the others.
 
