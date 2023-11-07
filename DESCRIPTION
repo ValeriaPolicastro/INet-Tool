@@ -12,3 +12,7 @@ Imports:
     datastructures,
     ggplot2,
     parallel
+VignetteBuilder: knitr
+Suggests:
+    knitr,
+    rmarkdown
