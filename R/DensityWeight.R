@@ -6,9 +6,9 @@
 #' @param graphL the list of weighted graphs in igraph format.
 #'
 #' @return
-#' - the quantile of the mean density distribution//
-#' - the quantile of the mean density distribution without the zeros//
-#' - plot density distribution without the zeros//
+#' the quantile of the mean density distribution,
+#' the quantile of the mean density distribution without the zeros,
+#' plot density distribution without the zeros
 #' @export
 #' @import igraph ggplot2
 #'

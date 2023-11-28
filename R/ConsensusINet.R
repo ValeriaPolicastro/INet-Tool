@@ -17,9 +17,9 @@
 #' ncores equal to the number of graphs to integrate.
 #'
 #' @return a list of 3 types:
-#' $graphConsensus the Consensus Network//
+#' $graphConsensus the Consensus Network,
 #' $Comparison the Jaccard weighted distances between the graphs
-#' calculated in each iteration//
+#' calculated in each iteration,
 #' $similarGraphs the similar graphs before the Thresholding
 #'
 #' @export

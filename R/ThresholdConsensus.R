@@ -3,7 +3,7 @@
 #' @description The function reconstructs the Consensus Network with different
 #' thresholding after the \code{\link{consensusNet}} function starting from
 #' similar graphs.
-#' @param sim.graphL a list of **similarGraphs** output of the
+#' @param sim.graphL a list of similarGraphs output of the
 #' \code{\link{consensusNet}} function.
 #' @param threshold different threshold to compute.
 #'

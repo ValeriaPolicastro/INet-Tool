@@ -4,7 +4,7 @@
 #' to give information of the peculiar layer not present in the Consensus.
 #' @param adjL list of weighted adjacency matrix with the same names in rows
 #' and columns for all the matrices.
-#' @param graph.consensus **graphConsensus** output of the
+#' @param graph.consensus graphConsensus output of the
 #'  \code{\link{consensusNet}} function.
 #'
 #' @return Case Specific Networks one for each layer and percentage of
