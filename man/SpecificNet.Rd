@@ -7,10 +7,11 @@
 specificNet(adjL, graph.consensus)
 }
 \arguments{
-\item{adjL}{list of weighted adjacency matrix with the SAME nodes in rows
+\item{adjL}{list of weighted adjacency matrix with the same names in rows
 and columns for all the matrices.}
 
-\item{graph.consensus}{**graphConsensus** output of consensusNet function.}
+\item{graph.consensus}{**graphConsensus** output of the
+\code{\link{consensusNet}} function.}
 }
 \value{
 Case Specific Networks one for each layer and percentage of

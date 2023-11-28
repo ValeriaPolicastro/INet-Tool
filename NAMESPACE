@@ -2,7 +2,7 @@
 
 export(JWmatrix)
 export(JWmean)
-export(adjSameName)
+export(adj_rename)
 export(consensusNet)
 export(constructionGraph)
 export(densityNet)

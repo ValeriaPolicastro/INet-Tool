@@ -16,7 +16,8 @@ true it computes also nodes measures (default TRUE).}
 list of measure for each layer.
 }
 \description{
-graphs and nodes measures to analyse all the layers in one shot.
+This function computes graphs and nodes measures to analyse all
+ the layers in one shot.
 }
 \examples{
 data("graphL_data")

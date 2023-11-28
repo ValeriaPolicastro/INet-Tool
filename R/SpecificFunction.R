@@ -2,9 +2,10 @@
 #'
 #' @description The function creates Case Specific Networks one for each layer
 #' to give information of the peculiar layer not present in the Consensus.
-#' @param adjL list of weighted adjacency matrix with the SAME nodes in rows
+#' @param adjL list of weighted adjacency matrix with the same names in rows
 #' and columns for all the matrices.
-#' @param graph.consensus **graphConsensus** output of consensusNet function.
+#' @param graph.consensus **graphConsensus** output of the
+#'  \code{\link{consensusNet}} function.
 #'
 #' @return Case Specific Networks one for each layer and percentage of
 #' specificity.

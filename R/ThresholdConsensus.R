@@ -1,9 +1,10 @@
 #' thresholdNet
 #'
 #' @description The function reconstructs the Consensus Network with different
-#' Thresholding after the ConsensusNet function starting from similar graphs.
-#' @param sim.graphL a list of similarGraphs output of ConsensusAlgorithm
-#' function.
+#' thresholding after the \code{\link{consensusNet}} function starting from
+#' similar graphs.
+#' @param sim.graphL a list of **similarGraphs** output of the
+#' \code{\link{consensusNet}} function.
 #' @param threshold different threshold to compute.
 #'
 #' @return a new consensus network igraph object.

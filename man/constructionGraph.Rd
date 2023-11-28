@@ -18,9 +18,9 @@ modularity with louvain method), graphs in a list for each layer and weighted
 adjacency matrices in a list for each layer.
 }
 \description{
-Contruction of graphs from data with pearson correlation and
-proportional thresholding (the data should be with the SAME name (nodes) in
-columns for all the matrices).
+This function constructs graphs from data with pearson correlation and
+proportional thresholding (the data should be with the same names (the nodes)
+in columns for all the matrices).
 }
 \examples{
 data("exampleL_data")

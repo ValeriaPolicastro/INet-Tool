@@ -1,19 +1,20 @@
 #' Example Data
 #'
-#'Gene_Expression, Methy_Expression and Mirna_Expression data from patients with Glioblastoma
+#' 3 data types: Gene_Expression, Methy_Expression and Mirna_Expression data
+#' from patients with Glioblastoma
 #' @format ## `exampleL_data`
 #' A list of 3 objects:
 #' \describe{
-#' \item{Gene_Expression}{subset of Gene expression data from patients with Glioblastoma;}
-#'   \item{Methy_Expression}{subset of Methylation data from patients with Glioblastoma;}
-#'   \item{Mirna_Expression}{subset of Mirna data from patients with Glioblastoma.}
+#' \item{Gene_Expression}{subset of Gene expression data;}
+#'   \item{Methy_Expression}{subset of Methylation data;}
+#'   \item{Mirna_Expression}{subset of Mirna data.}
 #' }
 #' @source <https://portal.gdc.cancer.gov/>
 "exampleL_data"
 
 #' Graph Data
 #'
-#' List of graph data type.
+#' List of 2 graphs of igraph class type.
 #' @format ## `graphL_data`
 #' A list of 2 objects:
 #' \describe{
@@ -25,7 +26,7 @@
 
 #' Adjacency Data
 #'
-#' List of adjacency matrices data type.
+#' List of 2 adjacency matrices data type.
 #' @format ## `adjL_data`
 #' A list of 2 objects:
 #' \describe{
@@ -38,7 +39,7 @@
 
 #' try Data
 #'
-#' Random data with different nodes name in a list of adjacency matrices.
+#' Random data with different nodes name in a list of 2 adjacency matrices.
 #' @format ## `tryL_data`
 #' A list of 2 objects:
 #' \describe{

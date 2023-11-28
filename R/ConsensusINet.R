@@ -1,9 +1,9 @@
 #' consensusNet
 #'
-#' @description The function computes the INet Algorithm for the construction of
-#' a Consensus Network.
+#' @description This function computes the INet Algorithm for the construction of a
+#' **Consensus Network**.
 #'
-#' @param adjL list of weighted adjacency matrix with the SAME nodes in rows
+#' @param adjL list of weighted adjacency matrix with the same name in rows
 #' and columns for all the matrices.
 #' @param threshold threshold for the construction of the Consensus
 #' (default 0.5). Used in the last step on the similar graphs.
@@ -16,11 +16,11 @@
 #' @param ncores number of CPU cores to use (default is 2). We suggest to use
 #' ncores equal to the number of graphs to integrate.
 #'
-#' @return 3 output:
-#' - graphConsensus the Consensus Network
-#' - Comparison the Jaccard Weighted Distances between the graphs
-#' calculated in each iteration
-#' - similarGraphs the similar graphs before the Thresholding
+#' @return a list of 3 types:
+#' $graphConsensus the Consensus Network//
+#' $Comparison the Jaccard weighted distances between the graphs
+#' calculated in each iteration//
+#' $similarGraphs the similar graphs before the Thresholding
 #'
 #' @export
 #' @import datastructures igraph parallel

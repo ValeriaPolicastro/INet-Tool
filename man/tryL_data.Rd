@@ -16,6 +16,6 @@ A list of 2 objects:
 tryL_data
 }
 \description{
-Random data with different nodes name in a list of adjacency matrices.
+Random data with different nodes name in a list of 2 adjacency matrices.
 }
 \keyword{datasets}

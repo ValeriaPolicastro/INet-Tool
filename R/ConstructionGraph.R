@@ -1,8 +1,8 @@
 #' constructionGraph
 #'
-#' @description Contruction of graphs from data with pearson correlation and
-#' proportional thresholding (the data should be with the SAME name (nodes) in
-#' columns for all the matrices).
+#' @description This function constructs graphs from data with pearson correlation and
+#' proportional thresholding (the data should be with the same names (the nodes)
+#' in columns for all the matrices).
 #' @param data a list of datasets
 #' @param perc percentile (default 0.95 it takes the 5 percent of the highest
 #' weights)

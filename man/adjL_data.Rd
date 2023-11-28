@@ -16,6 +16,6 @@ A list of 2 objects:
 adjL_data
 }
 \description{
-List of adjacency matrices data type.
+List of 2 adjacency matrices data type.
 }
 \keyword{datasets}

@@ -1,6 +1,7 @@
 #' measuresNet
 #'
-#' @description graphs and nodes measures to analyse all the layers in one shot.
+#' @description This function computes graphs and nodes measures to analyse all
+#'  the layers in one shot.
 #' @param graphL a list of graphs as igraphs objects.
 #' @param nodes.measures logical, if falso it computes only graph measures, if
 #' true it computes also nodes measures (default TRUE).

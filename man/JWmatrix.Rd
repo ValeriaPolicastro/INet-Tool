@@ -7,14 +7,14 @@
 JWmatrix(graphL)
 }
 \arguments{
-\item{graphL}{list of graphs as igraph objects with the SAME nodes.}
+\item{graphL}{list of graphs as igraph objects with the same nodes.}
 }
 \value{
-Weighted Jaccard Distance Matrix.
+weighted Jaccard distance matrix
 }
 \description{
-Jaccard Weighted Matrix Distance between all the graphs in
-pairs.
+This function computes the Jaccard weighted matrix distance
+between all the pairs of graphs.
 }
 \examples{
 data("graphL_data")

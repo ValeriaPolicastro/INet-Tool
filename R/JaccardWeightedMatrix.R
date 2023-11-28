@@ -1,10 +1,10 @@
 #' JWmatrix
 #'
-#' @description Jaccard Weighted Matrix Distance between all the graphs in
-#' pairs.
-#' @param graphL list of graphs as igraph objects with the SAME nodes.
+#' @description This function computes the Jaccard weighted matrix distance
+#' between all the pairs of graphs.
+#' @param graphL list of graphs as igraph objects with the same nodes.
 #'
-#' @return Weighted Jaccard Distance Matrix.
+#' @return weighted Jaccard distance matrix
 #' @export
 #' @import igraph
 #'

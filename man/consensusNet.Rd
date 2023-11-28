@@ -14,7 +14,7 @@ consensusNet(
 )
 }
 \arguments{
-\item{adjL}{list of weighted adjacency matrix with the SAME nodes in rows
+\item{adjL}{list of weighted adjacency matrix with the same name in rows
 and columns for all the matrices.}
 
 \item{threshold}{threshold for the construction of the Consensus
@@ -33,15 +33,15 @@ construction of the Consensus (default 0.1).}
 ncores equal to the number of graphs to integrate.}
 }
 \value{
-3 output:
-- graphConsensus the Consensus Network
-- Comparison the Jaccard Weighted Distances between the graphs
-calculated in each iteration
-- similarGraphs the similar graphs before the Thresholding
+a list of 3 types:
+$graphConsensus the Consensus Network//
+$Comparison the Jaccard weighted distances between the graphs
+calculated in each iteration//
+$similarGraphs the similar graphs before the Thresholding
 }
 \description{
-The function computes the INet Algorithm for the construction of
-a Consensus Network.
+This function computes the INet Algorithm for the construction of a
+**Consensus Network**.
 }
 \examples{
 data("adjL_data")

@@ -7,14 +7,14 @@
 JWmean(graphL)
 }
 \arguments{
-\item{graphL}{list of different graphs in igraph format with SAME nodes.}
+\item{graphL}{list of different graphs in igraph format with same nodes.}
 }
 \value{
-a number.
+a number: the mean distance
 }
 \description{
-Jaccard Weighted Mean Distance to understand how different are
-the layers.
+This function computes Jaccard weighted mean distance between
+all the layers.
 }
 \examples{
 data("graphL_data")

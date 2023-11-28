@@ -1,10 +1,10 @@
 #' JWmean
 #'
-#' @description Jaccard Weighted Mean Distance to understand how different are
-#' the layers.
-#' @param graphL list of different graphs in igraph format with SAME nodes.
+#' @description This function computes Jaccard weighted mean distance between
+#' all the layers.
+#' @param graphL list of different graphs in igraph format with same nodes.
 #'
-#' @return a number.
+#' @return a number: the mean distance
 #' @import igraph
 #' @export
 #'

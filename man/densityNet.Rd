@@ -10,12 +10,12 @@ densityNet(graphL)
 \item{graphL}{the list of weighted graphs in igraph format.}
 }
 \value{
-- the quantile of the mean density distribution
-- the quantile of the mean density distribution without the zeros
-- plot density distribution without the zeros
+- the quantile of the mean density distribution//
+- the quantile of the mean density distribution without the zeros//
+- plot density distribution without the zeros//
 }
 \description{
-The function creates a density plot of the different graphs mean
+This function creates a density plot of the different graphs mean
 weights. It can be used to search the final Threshold for the Consensus
 Network starting from similar networks.
 }

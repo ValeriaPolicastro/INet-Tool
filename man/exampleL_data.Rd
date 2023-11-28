@@ -8,9 +8,9 @@
 ## `exampleL_data`
 A list of 3 objects:
 \describe{
-\item{Gene_Expression}{subset of Gene expression data from patients with Glioblastoma;}
-  \item{Methy_Expression}{subset of Methylation data from patients with Glioblastoma;}
-  \item{Mirna_Expression}{subset of Mirna data from patients with Glioblastoma.}
+\item{Gene_Expression}{subset of Gene expression data;}
+  \item{Methy_Expression}{subset of Methylation data;}
+  \item{Mirna_Expression}{subset of Mirna data.}
 }
 }
 \source{
@@ -20,6 +20,7 @@ A list of 3 objects:
 exampleL_data
 }
 \description{
-Gene_Expression, Methy_Expression and Mirna_Expression data from patients with Glioblastoma
+3 data types: Gene_Expression, Methy_Expression and Mirna_Expression data
+from patients with Glioblastoma
 }
 \keyword{datasets}

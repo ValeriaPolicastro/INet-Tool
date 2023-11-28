@@ -16,6 +16,6 @@ A list of 2 objects:
 graphL_data
 }
 \description{
-List of graph data type.
+List of 2 graphs of igraph class type.
 }
 \keyword{datasets}

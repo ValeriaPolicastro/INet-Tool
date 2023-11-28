@@ -18,7 +18,7 @@ plotINet(
 \arguments{
 \item{adj}{one of the beginning adjacency matrices}
 
-\item{graph.consensus}{consensus network, output of
+\item{graph.consensus}{consensus network, output of the
 \code{\link{consensusNet}} function}
 
 \item{edge.width}{the edge width (default 3)}

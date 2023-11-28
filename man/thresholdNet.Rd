@@ -7,8 +7,8 @@
 thresholdNet(sim.graphL, threshold = 0.5)
 }
 \arguments{
-\item{sim.graphL}{a list of similarGraphs output of ConsensusAlgorithm
-function.}
+\item{sim.graphL}{a list of **similarGraphs** output of the
+\code{\link{consensusNet}} function.}
 
 \item{threshold}{different threshold to compute.}
 }
@@ -17,7 +17,8 @@ a new consensus network igraph object.
 }
 \description{
 The function reconstructs the Consensus Network with different
-Thresholding after the ConsensusNet function starting from similar graphs.
+thresholding after the \code{\link{consensusNet}} function starting from
+similar graphs.
 }
 \examples{
 data("adjL_data")

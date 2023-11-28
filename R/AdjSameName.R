@@ -1,18 +1,18 @@
-#' adjSameName
-#' @description it construct a list of adjacency matrices with the SAME nodes
-#' in rows and columns
-#'
+#' adj_rename
+#' @description This function constructs a list of adjacency matrices with the
+#' same rows and columns name for all the matrices. The output is the object
+#' needed for \code{\link{consensusNet}} function.
 #'
 #' @param adjL list of adjacency matrices
 #'
-#' @return a list of adjacency matrices with the SAME nodes in rows and columns
+#' @return a list of adjacency matrices with the same rows and columns name.
 #' @export
 #'
 #' @examples
 #' data("tryL_data")
-#' adjSameName(tryL_data)
+#' adj_rename(tryL_data)
 #'
-adjSameName <- function(adjL)
+adj_rename <- function(adjL)
 {
 
     #### Same name of nodes for all the networks:

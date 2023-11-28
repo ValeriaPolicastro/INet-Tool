@@ -5,7 +5,7 @@
 #'  consensus already present in the beginning one, while light blue edges
 #'  represent new edges constructed from the consensus.
 #' @param adj one of the beginning adjacency matrices
-#' @param graph.consensus consensus network, output of
+#' @param graph.consensus consensus network, output of the
 #' \code{\link{consensusNet}} function
 #' @param edge.width the edge width (default 3)
 #' @param vertex.label.cex the size of the vertex label (default 0.8)
@@ -131,7 +131,7 @@ plotINet <- function (adj, graph.consensus, edge.width=3,
 
 
 #' plotL
-#' @description plot the graphs
+#' @description This function plots all the layer in one plot
 #'
 #' @param graphL List of graphs
 #' @param ... other parameter
