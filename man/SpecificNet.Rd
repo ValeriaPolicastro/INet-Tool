@@ -4,33 +4,24 @@
 \alias{specificNet}
 \title{specificNet}
 \usage{
-specificNet(graphsL, graphConsensus)
+specificNet(adjL, graph.consensus)
 }
 \arguments{
-\item{graphsL}{list of weighted graphs in igraph format.}
+\item{adjL}{list of weighted adjacency matrix with the SAME nodes in rows
+and columns for all the matrices.}
 
-\item{graphConsensus}{output of ConsensusAlgorithm.}
+\item{graph.consensus}{**graphConsensus** output of consensusNet function.}
 }
 \value{
-Case Specific Networks one for each layer.
+Case Specific Networks one for each layer and percentage of
+specificity.
 }
 \description{
 The function creates Case Specific Networks one for each layer
 to give information of the peculiar layer not present in the Consensus.
 }
 \examples{
-gI <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gI)$weight <- runif(igraph::ecount(gI),0.5,1)
-gII <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
-graphsList <- list(gI,gII)
-
-MatI <- igraph::as_adjacency_matrix(graph= gI,attr = "weight")
-MatII <- igraph::as_adjacency_matrix( graph= gII, attr = "weight")
-my_AdjMatrices <- list(MatI,MatII)
-
-my_Consensus <- consensusNet(adjMatL=my_AdjMatrices, tolerance=0.1,
-theta=0.04, ThresholdConsensus=0.5, nitermax=50,ncores=2)
-
-specificNet(graphsL=graphsList,graphConsensus=my_Consensus$graphConsensus)
+data("adjL_data")
+myConsensus <- consensusNet(adjL_data)
+specificNet(adjL_data, myConsensus$graphConsensus)
 }

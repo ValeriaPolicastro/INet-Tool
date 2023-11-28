@@ -7,12 +7,17 @@ Description: It constructs a Consensus Network which identifies the general info
 License: MIT + file LICENSE
 Encoding: UTF-8
 RoxygenNote: 7.2.3
+Depends:
+    R (>= 3.5.0)
 Imports:
     igraph,
     datastructures,
     ggplot2,
-    parallel
+    parallel,
+    ggpubr,
+    multinet
 VignetteBuilder: knitr
 Suggests:
     knitr,
     rmarkdown
+LazyData: true

@@ -4,10 +4,10 @@
 \alias{JWmatrix}
 \title{JWmatrix}
 \usage{
-JWmatrix(graphsL)
+JWmatrix(graphL)
 }
 \arguments{
-\item{graphsL}{list of graphs as igraph objects with the SAME nodes.}
+\item{graphL}{list of graphs as igraph objects with the SAME nodes.}
 }
 \value{
 Weighted Jaccard Distance Matrix.
@@ -17,13 +17,6 @@ Jaccard Weighted Matrix Distance between all the graphs in
 pairs.
 }
 \examples{
-gI <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gI)$weight <- runif(igraph::ecount(gI),0.5,1)
-gII <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
-
-
-graphsList <- list(gI,gII)
-JWmatrix(graphsL=graphsList)
-
+data("graphL_data")
+JWmatrix(graphL_data)
 }

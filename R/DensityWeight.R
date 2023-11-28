@@ -3,7 +3,7 @@
 #' @description The function creates a density plot of the different graphs mean
 #' weights. It can be used to search the final Threshold for the Consensus
 #' Network starting from similar networks.
-#' @param graphsL the list of weighted graphs in igraph format.
+#' @param graphL the list of weighted graphs in igraph format.
 #'
 #' @return
 #' - the quantile of the mean density distribution
@@ -13,27 +13,21 @@
 #' @import igraph ggplot2
 #'
 #' @examples
-#' gI <- igraph::sample_pa(n=10,directed=FALSE)
-#' igraph::E(gI)$weight <- runif(igraph::ecount(gI),0.5,1)
-#' gII <- igraph::sample_pa(n=10,directed=FALSE)
-#' igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
-#'
-#' graphsList <- list(gI,gII)
-#'
-#' densityNet(graphsL=graphsList)
-#'
+#' data("graphL_data")
+#' densityNet(graphL_data)
 
 
-densityNet <- function (graphsL)
+
+densityNet <- function (graphL)
 
 
 {
 
   ###### Function Consensus
-  Mat <- vector(mode = "list", length = length(graphsL))
-  for (z in 1:length(graphsL))
+  Mat <- vector(mode = "list", length = length(graphL))
+  for (z in 1:length(graphL))
   {
-    Mat[[z]] <- as.matrix(igraph::as_adjacency_matrix(graphsL[[z]], attr="weight"))
+    Mat[[z]] <- as.matrix(igraph::as_adjacency_matrix(graphL[[z]], attr="weight"))
   }
 
   matrixMean <- matrix(0, nrow=dim(Mat[[1]])[1], ncol=dim(Mat[[1]])[1])
@@ -55,13 +49,6 @@ densityNet <- function (graphsL)
     }
   }
   matrix <- as.matrix(matrixMean)
-
-
-  get_lower_tri_noDiag <- function(cormat){
-    cormat[upper.tri(cormat)] <- NA
-    diag(cormat) <- NA
-    return(cormat)
-  }
 
 
   triA <- get_lower_tri_noDiag(matrix)

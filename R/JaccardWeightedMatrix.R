@@ -2,50 +2,35 @@
 #'
 #' @description Jaccard Weighted Matrix Distance between all the graphs in
 #' pairs.
-#' @param graphsL list of graphs as igraph objects with the SAME nodes.
+#' @param graphL list of graphs as igraph objects with the SAME nodes.
 #'
 #' @return Weighted Jaccard Distance Matrix.
 #' @export
 #' @import igraph
 #'
 #' @examples
-#' gI <- igraph::sample_pa(n=10,directed=FALSE)
-#' igraph::E(gI)$weight <- runif(igraph::ecount(gI),0.5,1)
-#' gII <- igraph::sample_pa(n=10,directed=FALSE)
-#' igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
-#'
-#'
-#' graphsList <- list(gI,gII)
-#' JWmatrix(graphsL=graphsList)
-#'
-JWmatrix <- function(graphsL)
+#' data("graphL_data")
+#' JWmatrix(graphL_data)
+
+JWmatrix <- function(graphL)
 {
 
     #To check if the names of the nodes are the same
-    comp <- utils::combn(1:length(graphsL), 2)
+    comp <- utils::combn(1:length(graphL), 2)
     for (j in 1:(dim(comp)[2]))
         {
-            if(names(table(igraph::V(graphsL[[comp[1,j]]])==igraph::V(graphsL[[comp[2,j]]])))=="TRUE")
+            if(names(table(igraph::V(graphL[[comp[1,j]]])==igraph::V(graphL[[comp[2,j]]])))=="TRUE")
             {}else{stop("Check:Not same nodes in all the graphs")}
         }
 
 
 
 
-  get_lower_tri_noDiag <- function(cormat){
-    cormat[upper.tri(cormat)] <- NA
-    diag(cormat) <- NA
-    return(cormat)
-  }
-
-
-
-
 
   A <- NULL
-  for (l in 1:length(graphsL))
+  for (l in 1:length(graphL))
   {
-    AdjW <- igraph::as_adjacency_matrix(graphsL[[l]], attr="weight")
+    AdjW <- igraph::as_adjacency_matrix(graphL[[l]], attr="weight")
     triA <- get_lower_tri_noDiag(AdjW)
     vettriA <- as.vector(triA)
     vetI <- vettriA[!is.na(vettriA)]

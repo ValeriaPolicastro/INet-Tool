@@ -19,51 +19,108 @@ output:
 To answer the integration problem, we constructed the \texttt{INet Algorithm}, assuming the presence of a structure underneath the different networks with some similarities that we want to pull out. We generate a \texttt{Consensus Network} to give common information present underneath the different layers and a global view of the actors which play a fundamental role in the phenomenon of interest. In addition, the algorithm constructs a \texttt{Case Specific Network} for each network containing peculiar information of the single data type not present in all the others.
 
 
-# INet package
+# Install and load package
 ```{r, library}
+# Install from CRAN 
+# !!!---not available at the moment---!!!
+# install.packages("INet")
+
+# Install the stable version from GitHub
+# install.packages("devtools")
+#devtools::install_github("ValeriaPolicastro/INet")
+
 library(INet)
 ```
 
-# Simulated data construction
-```{r, load dataset}
- gI <- igraph::sample_pa(n=10,directed=FALSE)
- igraph::E(gI)$weight <- runif(igraph::ecount(gI),0.5,1)
- gII <- igraph::sample_pa(n=10,directed=FALSE)
- igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
- graphsList <- list(gI,gII)
+# Example Data:
+```{r, data}
+data("exampleL_data")
 ```
 
-# Pre Analysis
+A list of 3 elements:
+- Gene_Expression subset of Gene expression data
+- Methy_Expression subset of Methylation data
+- Mirna_Expression subset of Mirna data 
+from 215 patients with Glioblastoma.
+
+# How to construct the Networks
+Vogliamo costruire 3 network di pazienti
+```{r, construction}
+net <- constructionGraph(exampleL_data)
+
+# List of lists:
+# Threshold used (highest weight, number of edges, number of nodes, modularity with louvain method)
+# graphs as igraph objects in a list for each layer
+# weighted adjacency matrices in a list for each layer.
+
+
+```
+
+# Pre Analysis:
+## How similar are the networks:
 ```{r}
+# Matrice delle distanze con Jaccard
+graphL <- net$Graphs
+JWmatrix(graphL)
 
-densityNet(graphsList)
-JWmatrix(graphsList)
-JWmean(graphsList)
+#Misura globale di distanza:
+JWmean(graphL)
+
 ```
 
-
-
-# Consensus network
-
-A list of weighted adjacency matrices is needed. 
-The nodes should be the same in all the matrices.
-
+## Networks measures: 
 ```{r}
- MatI <- igraph::as_adjacency_matrix(graph= gI,attr = "weight")
- MatII <- igraph::as_adjacency_matrix( graph= gII, attr = "weight")
- my_AdjMatrices <- list(MatI,MatII)
+measures <- measuresNet(graphL, nodes.measures=F)
+```
+- Transitivity measures the probability that the adjacent vertices of a vertex are connected. This is sometimes also called the clustering coefficient.
+- The diameter of a graphs is the length of the longest between the shortest path
+- The density of a graphs is the ratio of the number of edges and the number of possible edges.
+- The assortativity coefficient is positive if similar vertices tend to connect to each, and negative otherwise.
+- Centralize a graphs according to the degrees of vertices
+
+(default nodes.measures=T gives measures also about the nodes)
+```{r}
+measures[[1]] # measures of the first graph
+```
+
+# Plot Networks
+```{r, plot}
+plotL(graphL)
 ```
 
 
+# Consensus Algorithm:
 To construct the consensus network
-```{r, consensus_function}
-my_Consensus <- consensusNet(adjMatL=my_AdjMatrices, tolerance=0.1, theta=0.04, ThresholdConsensus=0.01, nitermax=50,ncores=2)
- my_Consensus
+```{r, consensus-function}
+adjL <- net$Adj
+GLIO_consensus <- consensusNet (adjL, theta=0.05) 
+
+# Theta: due to our analysis the best theta for 200 nodes network would be between 0.04 (best for 500 nodes) and 0.06 (best for 100 nodes) that is why we decided 0.05
+
+GLIO_consensus$graphConsensus 
+
 ```
 
+Network Consensus #215 29 
+
+```{r}
+GLIO_consensus$Comparison
+```
+Mean Jaccard for each step
+
+```{r}
+GLIO_consensus$similarGraphs
+```
+The similar graphs before the thresholding, useful if it is needed to change the final thesholding. In this last case use the function  **thresholdNet** for the thresholding and before you can also look to the density of the weights :
+```{r}
+densityNet(GLIO_consensus$similarGraphs)
+
+```
 
 
 # Specific Network
+
+To analyse the specificity of each layer
 ```{r, specific-function}
-specificNet(graphsL=graphsList,graphConsensus=my_Consensus$graphConsensus)
+specificNet(adjL, GLIO_consensus$graphConsensus)
 ```

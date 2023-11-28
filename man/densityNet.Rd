@@ -4,10 +4,10 @@
 \alias{densityNet}
 \title{densityNet}
 \usage{
-densityNet(graphsL)
+densityNet(graphL)
 }
 \arguments{
-\item{graphsL}{the list of weighted graphs in igraph format.}
+\item{graphL}{the list of weighted graphs in igraph format.}
 }
 \value{
 - the quantile of the mean density distribution
@@ -20,13 +20,6 @@ weights. It can be used to search the final Threshold for the Consensus
 Network starting from similar networks.
 }
 \examples{
-gI <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gI)$weight <- runif(igraph::ecount(gI),0.5,1)
-gII <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
-
-graphsList <- list(gI,gII)
-
-densityNet(graphsL=graphsList)
-
+data("graphL_data")
+densityNet(graphL_data)
 }

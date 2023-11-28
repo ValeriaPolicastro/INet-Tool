@@ -3,16 +3,16 @@
 #' @description The function computes the INet Algorithm for the construction of
 #' a Consensus Network.
 #'
-#' @param adjMatL list of weighted adjacency matrix with the SAME nodes in rows
+#' @param adjL list of weighted adjacency matrix with the SAME nodes in rows
 #' and columns for all the matrices.
+#' @param threshold threshold for the construction of the Consensus
+#' (default 0.5). Used in the last step on the similar graphs.
 #' @param tolerance the tolerance of differences between similar graphs for the
 #' construction of the Consensus (default 0.1).
 #' @param theta importance to give to the neighbourhood part of the weight
 #' (default 0.04).
 #' @param nitermax maximum number of iteration before stopping the algorithm
 #' (default 50).
-#' @param ThresholdConsensus threshold for the construction of the Consensus
-#' (default 0.5). Used in the last step on the similar graphs.
 #' @param ncores number of CPU cores to use (default is 2). We suggest to use
 #' ncores equal to the number of graphs to integrate.
 #'
@@ -26,42 +26,32 @@
 #' @import datastructures igraph parallel
 #'
 #' @examples
-#' gI <- igraph::sample_pa(n=10,directed=FALSE)
-#' igraph::E(gI)$weight <- runif(igraph::ecount(gI),0.5,1)
-#' gII <- igraph::sample_pa(n=10,directed=FALSE)
-#' igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
-#'
-#' MatI <- igraph::as_adjacency_matrix(graph= gI,attr = "weight")
-#' MatII <- igraph::as_adjacency_matrix( graph= gII, attr = "weight")
-#'
-#' my_AdjMatrices <- list(MatI,MatII)
-#'
-#' consensusNet(adjMatL=my_AdjMatrices, tolerance=0.1,
-#' theta=0.04, ThresholdConsensus=0.5, nitermax=50,ncores=2)
+#' data("adjL_data")
+#' consensusNet(adjL_data)
 
 
-consensusNet <- function (adjMatL, tolerance=0.1,theta=0.04,
-                                ThresholdConsensus=0.5,nitermax=50,
-                                ncores=2)
+consensusNet <- function (adjL, threshold=0.5,
+                          tolerance=0.1, theta=0.04,
+                           nitermax=50, ncores=2)
 
 
 {
 
 
   ##### Convert adjacency Matrix in graph as it need it
-  graph <- vector(mode = "list", length = length(adjMatL))
-  for (t in 1:length(adjMatL))
+  graph <- vector(mode = "list", length = length(adjL))
+  for (t in 1:length(adjL))
   {
-    if(length(rownames(adjMatL[[1]]))>0)
+    if(length(rownames(adjL[[1]]))>0)
     {
-      graph[[t]] <- igraph::graph_from_adjacency_matrix(adjMatL[[t]],
+      graph[[t]] <- igraph::graph_from_adjacency_matrix(adjL[[t]],
                                                 mode = "upper",
                                                 diag = FALSE,
                                                 add.colnames = "NA",
                                                 weighted = TRUE)
 
     }else{
-      graph[[t]] <- igraph::graph_from_adjacency_matrix(adjMatL[[t]],
+      graph[[t]] <- igraph::graph_from_adjacency_matrix(adjL[[t]],
                                                 mode = "upper",
                                                 diag = FALSE,
                                                 weighted = TRUE)
@@ -554,13 +544,13 @@ consensusNet <- function (adjMatL, tolerance=0.1,theta=0.04,
     }
   }
   matrix <- as.matrix(matrixMean)
-  matrix[matrix < ThresholdConsensus] <- 0
+  matrix[matrix < threshold] <- 0
 
   ###Reassign names to the nodes
-  if(length(rownames(adjMatL[[1]]))>0)
+  if(length(rownames(adjL[[1]]))>0)
   {
-    rownames(matrix) <- rownames(adjMatL[[1]])
-    colnames(matrix) <- colnames(adjMatL[[1]])
+    rownames(matrix) <- rownames(adjL[[1]])
+    colnames(matrix) <- colnames(adjL[[1]])
   }
   graphConsensus <- igraph::graph_from_adjacency_matrix(matrix, mode = "upper",
                                                 diag = FALSE, weighted = TRUE)
@@ -568,6 +558,7 @@ consensusNet <- function (adjMatL, tolerance=0.1,theta=0.04,
   output <- list( graphConsensus=graphConsensus,
                   Comparison=Comparison,
                   similarGraphs=graph)
+  #class(output) <- "INet"
   return(output)
 }
 

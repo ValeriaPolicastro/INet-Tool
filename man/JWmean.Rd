@@ -4,10 +4,10 @@
 \alias{JWmean}
 \title{JWmean}
 \usage{
-JWmean(graphsL)
+JWmean(graphL)
 }
 \arguments{
-\item{graphsL}{list of different graphs in igraph format with SAME nodes.}
+\item{graphL}{list of different graphs in igraph format with SAME nodes.}
 }
 \value{
 a number.
@@ -17,12 +17,6 @@ Jaccard Weighted Mean Distance to understand how different are
 the layers.
 }
 \examples{
-gI <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gI)$weight <- runif(igraph::ecount(gI),0.5,1)
-gII <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
-
-
-graphsList <- list(gI,gII)
-JWmean(graphsL=graphsList)
+data("graphL_data")
+JWmean(graphL_data)
 }

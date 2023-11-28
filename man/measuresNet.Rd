@@ -4,12 +4,12 @@
 \alias{measuresNet}
 \title{measuresNet}
 \usage{
-measuresNet(graphsL, NodesMeasures = TRUE)
+measuresNet(graphL, nodes.measures = TRUE)
 }
 \arguments{
-\item{graphsL}{a list of graphs as igraphs objects.}
+\item{graphL}{a list of graphs as igraphs objects.}
 
-\item{NodesMeasures}{logical, if falso it computes only graph measures, if
+\item{nodes.measures}{logical, if falso it computes only graph measures, if
 true it computes also nodes measures (default TRUE).}
 }
 \value{
@@ -19,11 +19,7 @@ list of measure for each layer.
 graphs and nodes measures to analyse all the layers in one shot.
 }
 \examples{
-gI <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gI)$weight <- runif(igraph::ecount(gI),0.5,1)
-gII <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
-graphsList <- list(gI,gII)
-measuresNet(graphsL=graphsList, NodesMeasures=TRUE)
+data("graphL_data")
+measuresNet(graphL_data)
 
 }

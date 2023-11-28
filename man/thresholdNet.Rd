@@ -4,16 +4,13 @@
 \alias{thresholdNet}
 \title{thresholdNet}
 \usage{
-thresholdNet(adjMatL, graphsL, ThresholdConsensus = 0.5)
+thresholdNet(sim.graphL, threshold = 0.5)
 }
 \arguments{
-\item{adjMatL}{list of weighted adjacency symmetric matrix where all the
-nodes are in all the networks in the same order.}
-
-\item{graphsL}{the list of similarGraphs output of ConsensusAlgorithm
+\item{sim.graphL}{a list of similarGraphs output of ConsensusAlgorithm
 function.}
 
-\item{ThresholdConsensus}{different threshold to compute.}
+\item{threshold}{different threshold to compute.}
 }
 \value{
 a new consensus network igraph object.
@@ -23,18 +20,7 @@ The function reconstructs the Consensus Network with different
 Thresholding after the ConsensusNet function starting from similar graphs.
 }
 \examples{
-gI <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gI)$weight <- runif(igraph::ecount(gI),0.5,1)
-gII <- igraph::sample_pa(n=10,directed=FALSE)
-igraph::E(gII)$weight <- runif(igraph::ecount(gII),0.5,1)
-
-MatI <- igraph::as_adjacency_matrix(graph= gI,attr = "weight")
-MatII <- igraph::as_adjacency_matrix( graph= gII, attr = "weight")
-my_AdjMatrices <- list(MatI,MatII)
-
-my_Consensus <- consensusNet(adjMatL=my_AdjMatrices, tolerance=0.1,
-theta=0.04, ThresholdConsensus=0.5, nitermax=50,ncores=2)
-thresholdNet(adjMatL= my_AdjMatrices,
-graphsL=my_Consensus$similarGraphs, ThresholdConsensus=0.5)
-
+data("adjL_data")
+myConsensus <- consensusNet(adjL_data)
+thresholdNet(myConsensus$similarGraphs)
 }
