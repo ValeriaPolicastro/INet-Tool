@@ -33,18 +33,19 @@ library(INet)
 ```
 
 # Example Data:
+
 ```{r, data}
 data("exampleL_data")
 ```
 
 A list of 3 elements:
-- Gene_Expression subset of Gene expression data
-- Methy_Expression subset of Methylation data
-- Mirna_Expression subset of Mirna data 
+- Gene_Expression a subset of Gene expression data
+- Methy_Expression a subset of Methylation data
+- Mirna_Expression a subset of Mirna data 
 from 215 patients with Glioblastoma.
 
 # How to construct the Networks
-Vogliamo costruire 3 network di pazienti
+To construct 3 patient network
 ```{r, construction}
 net <- constructionGraph(exampleL_data)
 
