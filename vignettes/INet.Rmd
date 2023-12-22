@@ -125,3 +125,4 @@ To analyse the specificity of each layer
 ```{r, specific-function}
 specificNet(adjL, GLIO_consensus$graphConsensus)
 ```
+
