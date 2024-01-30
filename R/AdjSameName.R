@@ -1,6 +1,6 @@
 #' adj_rename
 #' @description This function constructs a list of adjacency matrices with the
-#' same rows and columns name for all the matrices. The output is the object
+#' same row and column names for all the matrices. The output is the object
 #' needed for \code{\link{consensusNet}} function.
 #'
 #' @param adjL list of adjacency matrices

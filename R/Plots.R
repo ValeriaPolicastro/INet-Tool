@@ -131,7 +131,7 @@ plotINet <- function (adj, graph.consensus, edge.width=3,
 
 
 #' plotL
-#' @description This function plots all the layer in one plot
+#' @description This function plots all the layers in one plot
 #'
 #' @param graphL List of graphs
 #' @param ... other parameter
