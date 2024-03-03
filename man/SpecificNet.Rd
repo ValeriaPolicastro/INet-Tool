@@ -10,7 +10,7 @@ specificNet(adjL, graph.consensus)
 \item{adjL}{list of weighted adjacency matrix with the same names in rows
 and columns for all the matrices.}
 
-\item{graph.consensus}{**graphConsensus** output of the
+\item{graph.consensus}{graphConsensus output of the
 \code{\link{consensusNet}} function.}
 }
 \value{

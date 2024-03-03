@@ -10,9 +10,9 @@ densityNet(graphL)
 \item{graphL}{the list of weighted graphs in igraph format.}
 }
 \value{
-- the quantile of the mean density distribution//
-- the quantile of the mean density distribution without the zeros//
-- plot density distribution without the zeros//
+the quantile of the mean density distribution,
+the quantile of the mean density distribution without the zeros,
+plot density distribution without the zeros
 }
 \description{
 This function creates a density plot of the different graphs mean

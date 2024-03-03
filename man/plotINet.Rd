@@ -8,7 +8,7 @@ plotINet(
   adj,
   graph.consensus,
   edge.width = 3,
-  vertex.label.cex = 0.8,
+  vertex.label.cex = 0.5,
   vertex.size = 10,
   edge.curved = 0.2,
   method = "NA",

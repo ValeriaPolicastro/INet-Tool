@@ -15,7 +15,7 @@ plotL(graphL, ...)
 plot of graphs
 }
 \description{
-This function plots all the layer in one plot
+This function plots all the layers in one plot.
 }
 \examples{
 data("graphL_data")

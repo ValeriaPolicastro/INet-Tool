@@ -35,7 +35,8 @@ constructionGraph <- function(data, perc=0.95)
     weight <- as.data.frame(vect)
 
     p[[i]] <- ggplot2::ggplot(weight, aes(x=vect)) +
-      geom_histogram(color="#e9ecef",fill="#69b3a2")
+      geom_histogram(color="#e9ecef",fill="#69b3a2")+
+      xlab(paste("Weights",i))
 
     Thresh <- stats::quantile(CorrM[[i]],perc)
     CorrM[[i]][CorrM[[i]]<Thresh] <- 0

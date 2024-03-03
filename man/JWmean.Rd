@@ -13,8 +13,8 @@ JWmean(graphL)
 a number: the mean distance
 }
 \description{
-This function computes Jaccard weighted mean distance between
-all the layers.
+This function computes the Mean Weighted Jaccard Distance for
+Multilayer Networks.
 }
 \examples{
 data("graphL_data")

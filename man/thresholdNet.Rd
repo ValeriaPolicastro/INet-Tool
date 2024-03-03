@@ -7,7 +7,7 @@
 thresholdNet(sim.graphL, threshold = 0.5)
 }
 \arguments{
-\item{sim.graphL}{a list of **similarGraphs** output of the
+\item{sim.graphL}{a list of similarGraphs output of the
 \code{\link{consensusNet}} function.}
 
 \item{threshold}{different threshold to compute.}

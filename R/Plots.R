@@ -31,7 +31,7 @@
 
 
 plotINet <- function (adj, graph.consensus, edge.width=3,
-                       vertex.label.cex=0.8, vertex.size=10, edge.curved=0.2,
+                       vertex.label.cex=0.5, vertex.size=10, edge.curved=0.2,
                        method="NA", ...)
 
 
@@ -39,22 +39,10 @@ plotINet <- function (adj, graph.consensus, edge.width=3,
 
   ##### Convert adjacency Matrix in graph as it need it
 
-    if(length(rownames(adj))>0)
-    {
-      graph<- igraph::graph_from_adjacency_matrix(adj,
-                                                        mode = "upper",
-                                                        diag = FALSE,
-                                                        add.colnames = "NA",
-                                                        weighted = TRUE)
-
-    }else{
       graph <- igraph::graph_from_adjacency_matrix(adj,
                                                         mode = "upper",
                                                         diag = FALSE,
                                                         weighted = TRUE)
-    }
-
-
 
 
   # Adding vertex new:
@@ -131,8 +119,7 @@ plotINet <- function (adj, graph.consensus, edge.width=3,
 
 
 #' plotL
-#' @description This function plots all the layers in one plot
-#'
+#' @description This function plots all the layers in one plot.
 #' @param graphL List of graphs
 #' @param ... other parameter
 #'
@@ -159,13 +146,13 @@ plotL <- function(graphL, ...)
 
   ###### CHANGE A IGRAPH IN MULTILAYER:
   n <-  multinet::ml_empty()
-  for (l in 1: length(graphL))
+  for (l in 1:length(graphL))
   {
     multinet::add_igraph_layer_ml(n, graphL[[l]], name=as.character(l))
 
   }
-
-multinet:::plot.Rcpp_RMLNetwork(n, ...)
+  nlayers <- seq(1:length(graphL))
+multinet:::plot.Rcpp_RMLNetwork(x=n,layers=nlayers,...)
 
 }
 

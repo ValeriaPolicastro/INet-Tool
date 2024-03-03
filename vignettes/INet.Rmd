@@ -13,116 +13,142 @@ output:
     toc_depth: 2
 ---
 
-
 # INet
 
-To answer the integration problem, we constructed the \texttt{INet Algorithm}, assuming the presence of a structure underneath the different networks with some similarities that we want to pull out. We generate a \texttt{Consensus Network} to give common information present underneath the different layers and a global view of the actors which play a fundamental role in the phenomenon of interest. In addition, the algorithm constructs a \texttt{Case Specific Network} for each network containing peculiar information of the single data type not present in all the others.
-
-
-# Install and load package
-```{r, library}
-# Install from CRAN 
-# !!!---not available at the moment---!!!
-# install.packages("INet")
-
-# Install the stable version from GitHub
-# install.packages("devtools")
-#devtools::install_github("ValeriaPolicastro/INet")
-
-library(INet)
+To answer the integration problem, we constructed the `INet Algorithm`, assuming the presence of a structure underneath the different networks with some similarities that we want to pull out. We generate a `Consensus Network` to give common information present underneath the different layers and a global view of the actors which play a fundamental role in the phenomenon of interest. In addition, the algorithm constructs a `Case Specific Network` for each network containing peculiar information of the single data type not present in all the others.
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-# Example Data:
+## Installation of INet package
+
+```{r, library}
+# Install from CRAN 
+# install.packages("INet")
+
+# Install from GitHub
+# install.packages("devtools")
+#devtools::install_github("ValeriaPolicastro/INet-package")
+
+```
+
+# Usage Example
+
+We load the package and a list with the example datasets. In this case, columns of both datasets represent patients, while rows represent gene expression, methylation and mirna expression respectively.
 
 ```{r, data}
+library(INet)
 data("exampleL_data")
 ```
 
-A list of 3 elements:
-- Gene_Expression a subset of Gene expression data
-- Methy_Expression a subset of Methylation data
-- Mirna_Expression a subset of Mirna data 
-from 215 patients with Glioblastoma.
+## Constuction of the Networks
 
-# How to construct the Networks
-To construct 3 patient network
+If you do not have already the weighted networks, as in our example, you can construct them throughout this function:
+
 ```{r, construction}
 net <- constructionGraph(exampleL_data)
-
-# List of lists:
-# Threshold used (highest weight, number of edges, number of nodes, modularity with louvain method)
-# graphs as igraph objects in a list for each layer
-# weighted adjacency matrices in a list for each layer.
-
-
 ```
 
-# Pre Analysis:
-## How similar are the networks:
+*If you have already the networks skip this step.*
+
+The function constructs similarity networks based on pearson correlation and the percentile parameter, in our example it constructs 3 patient similarity networks.
+
+The outputs of the function are an histogram of the weights for each dataset and a list of lists containing:
+
+-   Threshold used (highest weight, number of edges, number of nodes, modularity with louvain method)
+
+-   graphs as igraph objects in a list for each layer
+
+-   weighted adjacency matrices in a list for each layer.
+
+## 1) Pre Analysis
+
+To detect how similar are the networks you can use the Jaccard distance matrix function:
+
 ```{r}
-# Matrice delle distanze con Jaccard
 graphL <- net$Graphs
 JWmatrix(graphL)
-
-#Misura globale di distanza:
-JWmean(graphL)
-
 ```
 
-## Networks measures: 
+or the *Mean Weighted Jaccard Distance for Multilayer Networks* a global distance function:
+
+```{r}
+JWmean(graphL)
+```
+
+## Networks measures
+
+To calculate different measures on the different graphs you can easly use the following function:
+
 ```{r}
 measures <- measuresNet(graphL, nodes.measures=F)
 ```
-- Transitivity measures the probability that the adjacent vertices of a vertex are connected. This is sometimes also called the clustering coefficient.
-- The diameter of a graphs is the length of the longest between the shortest path
-- The density of a graphs is the ratio of the number of edges and the number of possible edges.
-- The assortativity coefficient is positive if similar vertices tend to connect to each, and negative otherwise.
-- Centralize a graphs according to the degrees of vertices
-
 (default nodes.measures=T gives measures also about the nodes)
+
+The measures of the first graph:
+
 ```{r}
-measures[[1]] # measures of the first graph
+measures[[1]] 
 ```
 
-# Plot Networks
+## Plot Networks
+
+To plot all the layers in one plot use:
+
 ```{r, plot}
-plotL(graphL)
+plotL(graphL,vertex.cex=.1,vertex.labels.cex=.1, vertex.color = 18)
 ```
 
+different parameter can be specified for the plot.
 
-# Consensus Algorithm:
-To construct the consensus network
+## 2) Consensus Network:
+
+To construct the *Consensus Network* use the list of adjacency matrices:
+
+***Note: `consensusNet` needs the same row and column names for all the matrices, if you do not have it use the `adj_rename`function before the consensus***
+
 ```{r, consensus-function}
 adjL <- net$Adj
-GLIO_consensus <- consensusNet (adjL, theta=0.05) 
-
-# Theta: due to our analysis the best theta for 200 nodes network would be between 0.04 (best for 500 nodes) and 0.06 (best for 100 nodes) that is why we decided 0.05
-
-GLIO_consensus$graphConsensus 
+Con <- consensusNet (adjL=net$Adj, theta=0.05) 
 
 ```
 
-Network Consensus #215 29 
+From our simulation study, we detected that the best theta for 500 nodes network is 0.04 and the best one for 100 nodes network is 0.06,thus for this example with 200 nodes we setted the parameter to 0.05.
+
+The output are:
+
+-   the *Consensus Network*
 
 ```{r}
-GLIO_consensus$Comparison
+Con$graphConsensus 
 ```
-Mean Jaccard for each step
+
+-   the *Mean Weighted Jaccard Distance for Multilayer Networks*
 
 ```{r}
-GLIO_consensus$similarGraphs
+Con$Comparison
 ```
-The similar graphs before the thresholding, useful if it is needed to change the final thesholding. In this last case use the function  **thresholdNet** for the thresholding and before you can also look to the density of the weights :
+
+-   the similar graphs before the thresholding
+
 ```{r}
-densityNet(GLIO_consensus$similarGraphs)
-
+#Con$similarGraphs
 ```
 
+The similar graphs are useful if it is needed to change the final thresholding, instead of computing again the algorithm you can use directly `thresholdNet` function.
 
-# Specific Network
+## 3) Case Specific Networks:
 
-To analyse the specificity of each layer
+To construct *Case Specific Networks* one for each layer to give information of the peculiar layer not present in the *Consensus*:
+
 ```{r, specific-function}
-specificNet(adjL, GLIO_consensus$graphConsensus)
+specificNet(adjL, Con$graphConsensus)
 ```
 
+## 4) Plot INet
+
+To plot a starting layer and the *Consensus* in one graph with different edge colours: red edges represent edges of the *Consensus* already present in the starting one, while light blue edges represent new edges constructed by the *Consensus*.
+
+```{r}
+plotINet(adjL[[1]], Con$graphConsensus, vertex.labels.cex=.01, vertex.size=2)
+```

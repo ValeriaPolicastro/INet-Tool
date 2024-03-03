@@ -1,7 +1,7 @@
 #' JWmean
 #'
-#' @description This function computes Jaccard weighted mean distance between
-#' all the layers.
+#' @description This function computes the Mean Weighted Jaccard Distance for
+#' Multilayer Networks.
 #' @param graphL list of different graphs in igraph format with same nodes.
 #'
 #' @return a number: the mean distance
