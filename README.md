@@ -1,5 +1,9 @@
 # INet <img src="https://github.com/ValeriaPolicastro/Paper-Robin/blob/master/images/logoINet.png" align="right" width="150" height="150"/>
 
+For the installation in R:
+
+               devtools::install_github("ValeriaPolicastro/INet-package")
+
 We want to identify general information by building a **Consensus Network** and then to obtain **Case-Specific Networks** one for each layer with the information present only in that layer and not in all the others.
 
 
@@ -29,3 +33,11 @@ We want to identify general information by building a **Consensus Network** and 
 <img src="https://github.com/ValeriaPolicastro/Images/blob/master/images/Algorithm2.png" width="600" height="300"/>
 
 </p>
+
+
+## License
+[Copyright (c) 2022 V. Policastro](https://github.com/ValeriaPolicastro/INet-package/blob/main/LICENSE)
+
+
+
+*Note: if the package ‘datastructure’ is not available for your version of R use devtools::install_github("dirmeier/datastructures") before installing INet*
