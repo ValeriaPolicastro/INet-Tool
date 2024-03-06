@@ -4,6 +4,9 @@ For the installation in R:
 
                devtools::install_github("ValeriaPolicastro/INet-package")
 
+
+*Note: if the package ‘datastructure’ is not available for your version of R use devtools::install_github("dirmeier/datastructures") before installing INet*
+
 We want to identify general information by building a **Consensus Network** and then to obtain **Case-Specific Networks** one for each layer with the information present only in that layer and not in all the others.
 
 
@@ -40,4 +43,3 @@ We want to identify general information by building a **Consensus Network** and 
 
 
 
-*Note: if the package ‘datastructure’ is not available for your version of R use devtools::install_github("dirmeier/datastructures") before installing INet*
