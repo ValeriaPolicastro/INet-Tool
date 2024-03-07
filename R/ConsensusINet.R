@@ -235,6 +235,8 @@ consensusNet <- function (adjL, threshold=0.5,
       Intersect_list <- vector(mode = "list", length = length(graph))
       EgoWeights_list <- vector(mode = "list", length = length(graph))
 
+      #utils::globalVariables(c("Neig_list","Weights_list","Intersect_list","EgoWeights_list"))
+
 
 
       ##We constract a hashmap for all the graphs
