@@ -1,5 +1,5 @@
 ---
-title: "INetTool for Network Integration"
+title: "INet for Network Integration"
 author: "Valeria Policastro et al."
 date: "`r Sys.Date()`"
 vignette: >
@@ -12,9 +12,7 @@ output:
     toc_depth: 2
 ---
 
-# INet
-
-To answer the integration problem, we constructed the `INet Algorithm`, assuming the presence of a structure underneath the different networks with some similarities that we want to pull out. We generate a `Consensus Network` to give common information present underneath the different layers and a global view of the actors which play a fundamental role in the phenomenon of interest. In addition, the algorithm constructs a `Case Specific Network` for each network containing peculiar information of the single data type not present in all the others.
+In the context of network integration, we propose the `INet` algorithm. `INet` assumes a similar network structure, representing latent variables in different network layers of the same system. Therefore, by combining individual edge weights and topological network structures, `INet` first constructs a `Consensus Network` that represents the shared information underneath the different layers to provide a global view of the entities that play a fundamental role in the phenomenon of interest. Then, it derives a `Case Specific Network` for each layer containing peculiar information of the single data type not present in all the others. 
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)

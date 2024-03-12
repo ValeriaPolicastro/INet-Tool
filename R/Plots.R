@@ -47,19 +47,19 @@ plotINet <- function (adj, graph.consensus, edge.width=3,
 
   # Adding vertex new:
   # If no vertex name
-  if(length(V(graph.consensus)$name)==0){
-    V(graph.consensus)$name <- as.character(as.vector(V(graph.consensus)))
+  if(length(igraph::V(graph.consensus)$name)==0){
+    igraph::V(graph.consensus)$name <- as.character(as.vector(igraph::V(graph.consensus)))
   }
 
   # If no vertex name
   if(length(V(graph)$name)==0){
-    V(graph)$name <- as.character(as.vector(V(graph)))
+    igraph::V(graph)$name <- as.character(as.vector(igraph::V(graph)))
   }
 
 
-  daAggiungere <- setdiff(V(graph.consensus)$name, V(graph)$name)
-  Graph <-  add_vertices(graph,length(daAggiungere))
-  V(Graph)$name <- c(V(graph)$name,daAggiungere)
+  daAggiungere <- setdiff(igraph::V(graph.consensus)$name, igraph::V(graph)$name)
+  Graph <-  igraph::add_vertices(graph,length(daAggiungere))
+  V(Graph)$name <- c(igraph::V(graph)$name,daAggiungere)
 
 
 
@@ -71,7 +71,7 @@ plotINet <- function (adj, graph.consensus, edge.width=3,
 
 
   #UnionGraph
-  ecol <- rep("gray80", ecount(UnionGraph))
+  ecol <- rep("gray80", igraph::ecount(UnionGraph))
 
   if(ecount(Diff)>0)
   {
