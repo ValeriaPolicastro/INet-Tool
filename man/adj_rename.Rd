@@ -20,5 +20,4 @@ needed for \code{\link{consensusNet}} function.
 \examples{
 data("tryL_data")
 adj_rename(tryL_data)
-
 }
