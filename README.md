@@ -1,8 +1,8 @@
-# INet <img src="https://github.com/ValeriaPolicastro/Paper-Robin/blob/master/images/logoINet.png" align="right" width="150" height="150"/>
+# INet Tool <img src="https://github.com/ValeriaPolicastro/Paper-Robin/blob/master/images/logoINet.png" align="right" width="150" height="150"/>
 
 For the installation in R:
 
-               devtools::install_github("ValeriaPolicastro/INet-package")
+               devtools::install_github("ValeriaPolicastro/INet-Tool")
 
 
 *Note: if the package ‘datastructure’ is not available for your version of R use devtools::install_github("dirmeier/datastructures") before installing INet*
