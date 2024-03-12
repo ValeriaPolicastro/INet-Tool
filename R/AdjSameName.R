@@ -11,7 +11,7 @@
 #' @examples
 #' data("tryL_data")
 #' adj_rename(tryL_data)
-#'
+
 adj_rename <- function(adjL)
 {
 
