@@ -1,6 +1,5 @@
 ---
-title: "INet"
-subtitle: "Network Integration"
+title: "INetTool for Network Integration"
 author: "Valeria Policastro et al."
 date: "`r Sys.Date()`"
 vignette: >
@@ -16,15 +15,16 @@ output:
 # INet
 
 To answer the integration problem, we constructed the `INet Algorithm`, assuming the presence of a structure underneath the different networks with some similarities that we want to pull out. We generate a `Consensus Network` to give common information present underneath the different layers and a global view of the actors which play a fundamental role in the phenomenon of interest. In addition, the algorithm constructs a `Case Specific Network` for each network containing peculiar information of the single data type not present in all the others.
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 ```
 
-## Installation of INet package
+## Installation of INetTool
 
 ```{r, library}
 # Install from CRAN 
-# install.packages("INet")
+# install.packages("INetTool")
 
 # Install from GitHub
 # install.packages("devtools")
@@ -32,12 +32,12 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE, message = FALSE)
 
 ```
 
-# Usage Example
+# Example
 
-We load the package and a list with the example datasets. In this case, columns of both datasets represent patients, while rows represent gene expression, methylation and mirna expression respectively.
+Load the package and a list with the example datasets. In this case, columns of both datasets represent patients, while rows represent gene expression, methylation and mirna expression respectively.
 
 ```{r, data}
-library(INet)
+library(INetTool)
 data("exampleL_data")
 ```
 
@@ -53,20 +53,25 @@ net <- constructionGraph(exampleL_data)
 
 The function constructs similarity networks based on pearson correlation and the percentile parameter, in our example it constructs 3 patient similarity networks.
 
-The outputs of the function are an histogram of the weights for each dataset and a list of lists containing:
+For this example we named:
 
--   Threshold used (highest weight, number of edges, number of nodes, modularity with louvain method)
+**adjL** the list of weighted adjacency matrices needed for the next functions
 
--   graphs as igraph objects in a list for each layer
+```{r}
+adjL <- net$Adj
+```
 
--   weighted adjacency matrices in a list for each layer.
+**graphL** the list of graphs needed for the next functions
+
+```{r}
+graphL <- net$Graphs
+```
 
 ## 1) Pre Analysis
 
 To detect how similar are the networks you can use the Jaccard distance matrix function:
 
 ```{r}
-graphL <- net$Graphs
 JWmatrix(graphL)
 ```
 
@@ -76,13 +81,14 @@ or the *Mean Weighted Jaccard Distance for Multilayer Networks* a global distanc
 JWmean(graphL)
 ```
 
-## Networks measures
+### Networks measures
 
 To calculate different measures on the different graphs you can easly use the following function:
 
 ```{r}
 measures <- measuresNet(graphL, nodes.measures=F)
 ```
+
 (default nodes.measures=T gives measures also about the nodes)
 
 The measures of the first graph:
@@ -91,7 +97,7 @@ The measures of the first graph:
 measures[[1]] 
 ```
 
-## Plot Networks
+### Plot Networks
 
 To plot all the layers in one plot use:
 
@@ -103,13 +109,12 @@ different parameter can be specified for the plot.
 
 ## 2) Consensus Network:
 
-To construct the *Consensus Network* use the list of adjacency matrices:
+To construct the *Consensus Network* use a list of weighted adjacency matrices:
 
 ***Note: `consensusNet` needs the same row and column names for all the matrices, if you do not have it use the `adj_rename`function before the consensus***
 
 ```{r, consensus-function}
-adjL <- net$Adj
-Con <- consensusNet (adjL=net$Adj, theta=0.05) 
+Con <- consensusNet (adjL, theta=0.05) 
 
 ```
 
@@ -132,10 +137,16 @@ Con$Comparison
 -   the similar graphs before the thresholding
 
 ```{r}
-#Con$similarGraphs
+Con$similarGraphs
 ```
 
 The similar graphs are useful if it is needed to change the final thresholding, instead of computing again the algorithm you can use directly `thresholdNet` function.
+
+Plotting the *Consensus Network* you can find the common informations present in all the layers:
+
+```{r}
+plotC(Con$graphConsensus,vertex.size=6, vertex.label.cex =0.5,vertex.color = 18)
+```
 
 ## 3) Case Specific Networks:
 
@@ -145,7 +156,7 @@ To construct *Case Specific Networks* one for each layer to give information of 
 specificNet(adjL, Con$graphConsensus)
 ```
 
-## 4) Plot INet
+## 4) INet Plot
 
 To plot a starting layer and the *Consensus* in one graph with different edge colours: red edges represent edges of the *Consensus* already present in the starting one, while light blue edges represent new edges constructed by the *Consensus*.
 

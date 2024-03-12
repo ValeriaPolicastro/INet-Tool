@@ -66,8 +66,8 @@ plotINet <- function (adj, graph.consensus, edge.width=3,
   UnionGraph <- igraph::union(Graph,graph.consensus)
 
 
-  Diff <- difference(graph.consensus,Graph)
-  Inter <- intersection(graph.consensus,Graph)
+  Diff <- igraph::difference(graph.consensus,Graph)
+  Inter <- igraph::intersection(graph.consensus,Graph)
 
 
   #UnionGraph
@@ -124,7 +124,7 @@ plotINet <- function (adj, graph.consensus, edge.width=3,
 #' @param ... other parameter
 #'
 #' @return plot of graphs
-#' @import multinet
+#' @import multinet igraph
 #' @export
 #'
 #' @examples
@@ -136,9 +136,9 @@ plotL <- function(graphL, ...)
   #it neeeds the names of the actors
    for (z in 1:length(graphL))
    {
-     if(is.null(V(graphL[[z]])$name)){
+     if(is.null(igraph::V(graphL[[z]])$name)){
 
-       V(graphL[[z]])$name <- seq(1:igraph::vcount(graphL[[z]]))
+       igraph::V(graphL[[z]])$name <- seq(1:igraph::vcount(graphL[[z]]))
      }
 
    }
@@ -152,7 +152,33 @@ plotL <- function(graphL, ...)
 
   }
   nlayers <- seq(1:length(graphL))
-multinet:::plot.Rcpp_RMLNetwork(x=n,layers=nlayers,...)
+  plot(x=n,layers=nlayers,...)
+
+}
+
+
+
+
+
+#' plotC
+#'
+#' @description The function plots the network without isolated nodes.
+#' @param graph a graph
+#' @param ... other parameter
+#'
+#' @return plot
+#' @import igraph
+#' @export
+#'
+#' @examples
+#' data("graphL_data")
+#' plotC(graphL_data[[1]])
+
+ plotC <- function(graph, ...)
+{
+   Isolated <- which(igraph::degree(graph)==0)
+   graph <- igraph::delete.vertices(graph, Isolated)
+   plot(graph, ...)
 
 }
 
