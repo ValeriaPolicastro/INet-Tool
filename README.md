@@ -1,4 +1,9 @@
-# INet <img src="https://github.com/ValeriaPolicastro/Paper-Robin/blob/master/images/logoINet.png" align="right" width="150" height="150"/>
+# *INet* for Network Integration
+ <img src="https://github.com/ValeriaPolicastro/Paper-Robin/blob/master/images/logoINet.png" align="right" width="150" height="150"/>
+The method is described in detail in the paper:
+
+[V. Policastro, M. Magnani, C. Angelini and A. Carissimo(2024). INet for network integration. Computational Statistics.](https://rdcu.be/dS1aB)
+
 
 For the installation in R:
 
@@ -6,6 +11,7 @@ For the installation in R:
 
 
 *Note: if the package ‘datastructure’ is not available for your version of R use devtools::install_github("dirmeier/datastructures") before installing INet-Tool*
+
 
 We want to identify general information by building a **Consensus Network** and then to obtain **Case-Specific Networks** one for each layer with the information present only in that layer and not in all the others.
 
