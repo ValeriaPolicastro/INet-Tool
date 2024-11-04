@@ -2,8 +2,7 @@
  <img src="https://github.com/ValeriaPolicastro/Paper-Robin/blob/master/images/logoINet.png" align="right" width="150" height="150"/>
 The method is described in detail in the paper:
 
-[V. Policastro, M. Magnani, C. Angelini and A. Carissimo(2024). INet for network integration. Computational Statistics.](https://rdcu.be/dS1aB)
-
+*V. Policastro, M. Magnani, C. Angelini and A. Carissimo(2024). INet for network integration. Computational Statistics.* https://link.springer.com/article/10.1007/s00180-024-01536-8
 
 For the installation in R:
 
