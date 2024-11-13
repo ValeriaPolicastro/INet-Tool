@@ -106,12 +106,14 @@ plotINet <- function (adj, graph.consensus, edge.width=3,
 
   # "#C77CFF"
 
+  Isolated <- which(igraph::degree(UnionGraph)==0)
+  UnionGraphI <- igraph::delete.vertices(UnionGraph, Isolated)
 
-  plot(UnionGraph, vertex.size=vertex.size, vertex.label.cex=vertex.label.cex,
+
+  plot(UnionGraphI, vertex.size=vertex.size, vertex.label.cex=vertex.label.cex,
        vertex.color=members,edge.color=ecol,edge.curved=edge.curved,
        edge.width= edge.width,
        ...)
-
 }
 
 
