@@ -9,7 +9,7 @@ For the installation in R:
                devtools::install_github("ValeriaPolicastro/INet-Tool")
 
 
-*Note: if the package ‘datastructure’ is not available for your version of R use devtools::install_github("dirmeier/datastructures") before installing INet-Tool*
+*Note: if the package ‘datastructure’ is not available for your version of R use devtools::install_github("dirmeier/datastructures") before installing INet-Tool, if you do not have Rtools download it from: https://cran.r-project.org/bin/windows/Rtools/rtools44/rtools.html and follow the instruction for the installation from https://cran.r-project.org/bin/windows/Rtools/rtools40.html*
 
 
 We want to identify general information by building a **Consensus Network** and then to obtain **Case-Specific Networks** one for each layer with the information present only in that layer and not in all the others.
