@@ -557,6 +557,19 @@ consensusNet <- function (adjL, threshold=0.5,
   graphConsensus <- igraph::graph_from_adjacency_matrix(matrix, mode = "upper",
                                                 diag = FALSE, weighted = TRUE)
 
+
+
+
+  ##Reassign names to the nodes in similarity graphs
+  if(length(rownames(adjL[[1]]))>0)
+  {
+  for (x in 1:length(graph))
+  {
+    V(graph[[x]])$name <- rownames(adjL[[1]])
+  }
+  }
+                       
+
   output <- list( graphConsensus=graphConsensus,
                   Comparison=Comparison,
                   similarGraphs=graph)
