@@ -55,6 +55,13 @@ JWmatrix <- function(graphL)
 
   #weighted jaccard distance
   dist.jac <- 1-sim.jac
+
+  if (length(names(graphL_data))>0){
+
+    rownames(dist.jac) <- names(graphL_data)
+    colnames(dist.jac) <- names(graphL_data)
+  }
+                      
   #print(dist.jac)
   return(dist.jac)
 
