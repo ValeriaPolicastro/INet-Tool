@@ -28,7 +28,7 @@ constructionGraph <- function(data, perc=0.95)
   p <- list()
   for (i in 1:length(data))
   {
-    CorrM[[i]] <- as.matrix(abs(stats::cor(data[[i]])))
+    CorrM[[i]] <- as.matrix(stats::cor(data[[i]]))
 
     vet <- as.vector(get_lower_tri_noDiag(CorrM[[i]]))
     vect <- vet[!is.na(vet)]
