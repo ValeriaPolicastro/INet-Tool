@@ -23,7 +23,7 @@
 #' $similarGraphs the similar graphs before the Thresholding
 #'
 #' @export
-#' @import datastructures igraph parallel
+#' @import igraph parallel r2r
 #'
 #' @examples
 #' data("adjL_data")
@@ -208,7 +208,7 @@ consensusNet <- function (adjL, threshold=0.5,
 
       #neigbhors
       funNeig <- function(x) {
-        datastructures::insert(m, node_id, as.vector(x))
+        r2r::insert(m, node_id, as.vector(x))
         node_id <<- node_id + 1
       }
 
@@ -216,14 +216,14 @@ consensusNet <- function (adjL, threshold=0.5,
       code <- function(a,b) {x <- min(a,b); y <- max(a,b); (x+y)*(x+y+1)/2 + y}
 
       funWeights <- function(x) {
-        datastructures::insert(s, code(E[edge_id,][1],E[edge_id,][2]),
+        r2r::insert(s, code(E[edge_id,][1],E[edge_id,][2]),
                                igraph::E(graph[[h]])$weight[edge_id])
         edge_id <<- edge_id + 1
       }
 
       #egoweights
       funegoWeights <- function(x) {
-        datastructures::insert(t, code(E[edge_id,][1],E[edge_id,][2]),0)
+        r2r::insert(t, code(E[edge_id,][1],E[edge_id,][2]),0)
         edge_id <<- edge_id + 1
       }
 
@@ -244,25 +244,25 @@ consensusNet <- function (adjL, threshold=0.5,
       {
         print(h)
         #Hashmap neighbors
-        m <- datastructures::hashmap("numeric")
+        m <- r2r::hashmap()
         l <- igraph::as_adj_list(graph[[h]])
-        node_id <<- 1
+        node_id <- 1
         lapply(l,funNeig)
         Neig_list[[h]] <- m
         print("m")
 
         #Hashmap weights
-        s <- datastructures::hashmap("numeric")
+        s <- r2r::hashmap()
         E <- igraph::as_edgelist(graph[[h]])
-        edge_id <<- 1
+        edge_id <- 1
         apply(E,1,funWeights)
         Weights_list[[h]] <- s
         print("s")
 
         #Hashmap egoWeights
-        t <- datastructures::hashmap("numeric")
+        t <- r2r::hashmap()
         E <- Edgelist # Edgelist of the union graph
-        edge_id <<- 1
+        edge_id <- 1
         apply(E,1,funegoWeights)
         EgoWeights_list[[h]] <- t
         print("t")
@@ -286,8 +286,10 @@ consensusNet <- function (adjL, threshold=0.5,
 
 
         ####Peso dell'edge nella network di interesse:
-        wUso <- tryCatch({Weights_list[[i]][code(nodes[1],nodes[2])][[1]]},
-                         error=function(e) { 0 })
+        wUso <- Weights_list[[i]][code(nodes[1],nodes[2])][[1]]
+        if(is.null(wUso)){
+          wUso <- 0
+          }
         # se non esiste l'edge mette zero
 
 
@@ -300,9 +302,10 @@ consensusNet <- function (adjL, threshold=0.5,
           Intersect_list[[j]] <- intersect(Neig_list [[j]][nodes[1]][[1]],
                                            Neig_list [[j]][nodes[2]][[1]])
           ###Peso dell' edge nelle altre network:
-          wAltri <- tryCatch({Weights_list[[j]][code(nodes[1],
-                                                     nodes[2])][[1]]},
-                             error=function(e) { 0 })
+          wAltri <- Weights_list[[j]][code(nodes[1],nodes[2])][[1]]
+          if(is.null(wAltri)){
+            wAltri <- 0
+          }
           wOthers <- c(wOthers,wAltri)
           #print(j)
         }
@@ -323,13 +326,14 @@ consensusNet <- function (adjL, threshold=0.5,
 
           for(k in 1:length(Intersect_list[[i]]))
           {
-            pesiint1 <- tryCatch({Weights_list[[i]][code(nodes[1],
-                                                         Intersect_list[[i]][k])][[1]]},
-                                 error=function(e) { 0 })
-            pesiint2 <- tryCatch({Weights_list[[i]][code(nodes[2],
-                                                         Intersect_list[[i]][k])][[1]]},
-                                 error=function(e) { 0 })
-
+            pesiint1 <- Weights_list[[i]][code(nodes[1],Intersect_list[[i]][k])][[1]]
+            if(is.null(pesiint1)){
+              pesiint1 <- 0
+            }
+            pesiint2 <- Weights_list[[i]][code(nodes[2],Intersect_list[[i]][k])][[1]]
+            if(is.null(pesiint2)){
+              pesiint2 <- 0
+            }
 
 
 
@@ -379,13 +383,15 @@ consensusNet <- function (adjL, threshold=0.5,
             for(k in 1:(length(Intersect_list[[j]])))
 
             {
-              pesiint1 <- tryCatch({Weights_list[[j]][code(nodes[1],
-                                                           Intersect_list[[j]][k])][[1]]},
-                                   error=function(e) { 0 })
-              pesiint2 <- tryCatch({Weights_list[[j]][code(nodes[2],
-                                                           Intersect_list[[j]][k])][[1]]},
-                                   error=function(e) { 0 })
+              pesiint1 <- Weights_list[[j]][code(nodes[1],Intersect_list[[j]][k])][[1]]
 
+              if(is.null(pesiint1)){
+                pesiint1 <- 0
+              }
+              pesiint2 <- Weights_list[[j]][code(nodes[2],Intersect_list[[j]][k])][[1]]
+              if(is.null(pesiint2)){
+                pesiint2 <- 0
+              }
 
 
 
@@ -568,7 +574,7 @@ consensusNet <- function (adjL, threshold=0.5,
     V(graph[[x]])$name <- rownames(adjL[[1]])
   }
   }
-                       
+
 
   output <- list( graphConsensus=graphConsensus,
                   Comparison=Comparison,
