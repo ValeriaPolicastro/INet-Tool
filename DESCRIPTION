@@ -14,7 +14,7 @@ Depends:
     R (>= 3.5.0)
 Imports:
     igraph,
-    datastructures,
+    r2r,
     ggplot2,
     parallel,
     ggpubr,
