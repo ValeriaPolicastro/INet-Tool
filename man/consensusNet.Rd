@@ -10,7 +10,8 @@ consensusNet(
   tolerance = 0.1,
   theta = 0.04,
   nitermax = 50,
-  ncores = 2
+  ncores = 2,
+  verbose = TRUE
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ construction of the Consensus (default 0.1).}
 
 \item{ncores}{number of CPU cores to use (default is 2). We suggest to use
 ncores equal to the number of graphs to integrate.}
+
+\item{verbose}{flag for verbose output (default as TRUE).}
 }
 \value{
 a list of 3 types:

@@ -21,7 +21,6 @@ measuresNet <- function(graphL, nodes.measures=TRUE)
    for (i in 1:length(graphL))
    {
        # graphs Measures
-       set.seed(100)
        verte <- igraph::vcount(graphL[[i]])
        edge <- igraph::ecount(graphL[[i]])
        tran <- igraph::transitivity(graphL[[i]],type="global")#Transitivity measures the probability that the adjacent vertices of a vertex are connected. This is sometimes also called the clustering coefficient.

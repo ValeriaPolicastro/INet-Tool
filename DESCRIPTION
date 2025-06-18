@@ -6,7 +6,7 @@ Authors@R: c(person("Valeria", "Policastro", role=c("aut", "cre"), email="valeri
     person("Claudia", "Angelini", role=c("aut"), email="c.angelini@na.iac.cnr.it"),
     person("Annamaria", "Carissimo", role=c("aut"), email="a.carissimo@na.iac.cnr.it"))
 Maintainer: Valeria Policastro <valeria.policastro@gmail.com>
-Description: It constructs a Consensus Network which identifies the general information of all the layers and Specific Networks for each layer with the information present only in that layer and not in all the others.
+Description: It constructs a Consensus Network which identifies the general information of all the layers and Specific Networks for each layer with the information present only in that layer and not in all the others.The method is described in Policastro et al. (2024) "INet for network integration" <doi:10.1007/s00180-024-01536-8>.
 License:MIT + file LICENSE
 Encoding: UTF-8
 RoxygenNote: 7.3.2
