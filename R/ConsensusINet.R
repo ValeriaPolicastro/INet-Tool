@@ -15,6 +15,7 @@
 #' (default 50).
 #' @param ncores number of CPU cores to use (default is 2). We suggest to use
 #' ncores equal to the number of graphs to integrate.
+#' @param verbose flag for verbose output (default as TRUE).
 #'
 #' @return a list of 3 types:
 #' $graphConsensus the Consensus Network,
@@ -32,7 +33,7 @@
 
 consensusNet <- function (adjL, threshold=0.5,
                           tolerance=0.1, theta=0.04,
-                           nitermax=50, ncores=2)
+                           nitermax=50, ncores=2, verbose=TRUE)
 
 
 {
@@ -151,7 +152,8 @@ consensusNet <- function (adjL, threshold=0.5,
 
       if(Comp < tolerance )
       {
-        print("less than tolerance")
+        if (verbose) cat("Multilayer network distance: less than tolerance.\n")
+        #print("less than tolerance")
         break
       }
     }
@@ -242,14 +244,14 @@ consensusNet <- function (adjL, threshold=0.5,
       ##We constract a hashmap for all the graphs
       for (h in 1:length(graph))
       {
-        print(h)
+        #print(h)
         #Hashmap neighbors
         m <- r2r::hashmap()
         l <- igraph::as_adj_list(graph[[h]])
         node_id <- 1
         lapply(l,funNeig)
         Neig_list[[h]] <- m
-        print("m")
+        #print("m")
 
         #Hashmap weights
         s <- r2r::hashmap()
@@ -257,7 +259,7 @@ consensusNet <- function (adjL, threshold=0.5,
         edge_id <- 1
         apply(E,1,funWeights)
         Weights_list[[h]] <- s
-        print("s")
+        #print("s")
 
         #Hashmap egoWeights
         t <- r2r::hashmap()
@@ -265,7 +267,7 @@ consensusNet <- function (adjL, threshold=0.5,
         edge_id <- 1
         apply(E,1,funegoWeights)
         EgoWeights_list[[h]] <- t
-        print("t")
+        #print("t")
       }
 
 
@@ -465,7 +467,8 @@ consensusNet <- function (adjL, threshold=0.5,
 
     #ricalcola Jaccard:
     CompPost <- JaccardAll(grafi=graphChange)
-    print(CompPost)
+    if (verbose) cat("Multilayer network distance:", CompPost, "\n")
+    #print(CompPost)
 
     if(count==0)
     {
@@ -493,7 +496,8 @@ consensusNet <- function (adjL, threshold=0.5,
 
     }else{
 
-      print("distance doesn't decrease")
+      if (verbose) cat("Distance doesn't decrease.\n")
+      #print("distance doesn't decrease")
       break
     }
 
@@ -505,7 +509,8 @@ consensusNet <- function (adjL, threshold=0.5,
     #2) massimo numero di itarazioni
     if( count > nitermax )
     {
-      print("maximum iteration")
+      if (verbose) cat("Maximum iteration.\n")
+      #print("maximum iteration")
       break
     }
 
