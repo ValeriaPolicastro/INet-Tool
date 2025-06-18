@@ -151,7 +151,7 @@ plotC(Con$graphConsensus,vertex.size=6, vertex.label.cex =0.5,vertex.color = 18)
 To construct *Case Specific Networks* one for each layer to give information of the peculiar layer not present in the *Consensus*:
 
 ```{r, specific-function}
-specificNet(adjL, Con$graphConsensus)
+specificNet(graphL, Con$graphConsensus)
 ```
 
 ## 4) INet Plot

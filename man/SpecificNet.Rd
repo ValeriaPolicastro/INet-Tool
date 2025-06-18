@@ -4,11 +4,10 @@
 \alias{specificNet}
 \title{specificNet}
 \usage{
-specificNet(adjL, graph.consensus)
+specificNet(graphL, graph.consensus)
 }
 \arguments{
-\item{adjL}{list of weighted adjacency matrix with the same names in rows
-and columns for all the matrices.}
+\item{graphL}{a list of graphs as igraphs objects.}
 
 \item{graph.consensus}{graphConsensus output of the
 \code{\link{consensusNet}} function.}
@@ -22,7 +21,8 @@ The function creates Case Specific Networks one for each layer
 to give information of the peculiar layer not present in the Consensus.
 }
 \examples{
+data("graphL_data")
 data("adjL_data")
 myConsensus <- consensusNet(adjL_data)
-specificNet(adjL_data, myConsensus$graphConsensus)
+specificNet(graphL_data, myConsensus$graphConsensus)
 }
