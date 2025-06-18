@@ -17,8 +17,8 @@
 #' @param ... other parameter
 #'
 #' @return Union graph beginning and consensus edge coloured, green edges
-#' consensus already present in the beginning, blue edges new of the consensus
-#' community detection on the beggining graph
+#' consensus already present in the beginning, blue edges new of the consensus.
+#' Community detection of the beggining graph if added.
 #' @import igraph robin
 #' @export
 #'
