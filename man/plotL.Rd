@@ -15,7 +15,8 @@ plotL(graphL, ...)
 plot of graphs
 }
 \description{
-This function plots all the layers in one plot.
+This function plots all the layers in one plot(wrapper of
+plot.multinet).
 }
 \examples{
 data("graphL_data")

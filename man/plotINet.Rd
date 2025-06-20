@@ -36,15 +36,16 @@ plotINet(
 \item{...}{other parameter}
 }
 \value{
-Union graph beginning and consensus edge coloured, green edges
-consensus already present in the beginning, blue edges new of the consensus.
-Community detection of the beggining graph if added.
+Union graph with beginning and consensus edge. Red edges represent
+edges of the consensus already present in the beginning one, while light blue
+ edges represent new edges constructed by the consensus procedure.
+Community detection of the beginning graph if added.
 }
 \description{
 The function plots a beginning network and the consensus in
-one graph with different edge colours: red edges represent edges of the
+one graph with different edge colors: red edges represent edges of the
  consensus already present in the beginning one, while light blue edges
- represent new edges constructed from the consensus.
+ represent new edges constructed by the consensus procedure.
 }
 \examples{
 data("adjL_data")

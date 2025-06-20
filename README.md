@@ -4,7 +4,15 @@
 
 *V. Policastro, M. Magnani, C. Angelini and A. Carissimo(2024). INet for network integration. Computational Statistics.* <https://link.springer.com/article/10.1007/s00180-024-01536-8>
 
+Available on CRAN <https://CRAN.R-project.org/package=INetTool>
+
 For the installation in R:
+
+```         
+  install.packages("INetTool")
+```
+
+For the installation from github:
 
 ```         
            devtools::install_github("ValeriaPolicastro/INet-Tool")
