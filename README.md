@@ -40,6 +40,6 @@ We want to identify general information by building a **Consensus Network** and 
 
 <p align="center">
 
-<img src="https://github.com/ValeriaPolicastro/Images/blob/master/images/Algorithm2.png" width="600" height="300"/>
+<img src="https://github.com/ValeriaPolicastro/Images/blob/master/images/INetAlgorithm.png" width="600" height="300"/>
 
 </p>
