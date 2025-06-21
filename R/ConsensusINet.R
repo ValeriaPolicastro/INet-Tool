@@ -3,7 +3,7 @@
 #' @description This function computes the INet Algorithm for the construction of a
 #' **Consensus Network**.
 #'
-#' @param adjL list of weighted adjacency matrix with the same name in rows
+#' @param adjL list of weighted adjacency matrix with weights in [0,1]. Same name in rows
 #' and columns for all the matrices.
 #' @param threshold threshold for the construction of the Consensus
 #' (default 0.5). Used in the last step on the similar graphs.
