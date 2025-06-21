@@ -1,6 +1,6 @@
 # *INet* for Network Integration
 
-<img src="https://github.com/ValeriaPolicastro/Paper-Robin/blob/master/images/logoINet.png" align="right" width="150" height="150"/> The method is described in detail in the paper:
+<img src="https://github.com/ValeriaPolicastro/Images/blob/master/images/INetTool_Logo.png" align="right" width="150" height="160"/> The method is described in detail in the paper:
 
 *V. Policastro, M. Magnani, C. Angelini and A. Carissimo(2024). INet for network integration. Computational Statistics.* <https://link.springer.com/article/10.1007/s00180-024-01536-8>
 
