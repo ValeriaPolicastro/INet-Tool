@@ -1,5 +1,5 @@
 ---
-title: "INet for Network Integration"
+title: "INetTool for Network Integration"
 author: "Valeria Policastro et al."
 date: "`r Sys.Date()`"
 vignette: >

@@ -15,7 +15,7 @@ consensusNet(
 )
 }
 \arguments{
-\item{adjL}{list of weighted adjacency matrix with the same name in rows
+\item{adjL}{list of weighted adjacency matrix with weights in [0,1]. Same name in rows
 and columns for all the matrices.}
 
 \item{threshold}{threshold for the construction of the Consensus
