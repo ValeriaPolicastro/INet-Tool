@@ -53,3 +53,9 @@ The dashboard includes 11 weighted gene networks, covering HIV, influenza, dengu
 Users can interactively explore gene connectivity, inspect edge weights, identify central genes using degree, betweenness, closeness, and harmonic centrality, and filter network visualizations.
 
 **[Explore the Interactive Network Dashboard](https://valeriapolicastro.github.io/INet-Tool/)**
+
+<p align="center">
+
+<img src="https://github.com/ValeriaPolicastro/Images/blob/master/images/Dashboard.png" width="600" height="600"/>
+
+</p>
