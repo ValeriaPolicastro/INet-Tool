@@ -43,3 +43,13 @@ We want to identify general information by building a **Consensus Network** and 
 <img src="https://github.com/ValeriaPolicastro/Images/blob/master/images/INetAlgorithm.png" width="600" height="300"/>
 
 </p>
+
+### Interactive Network Explorer
+
+Explore the results of network integration with **INetTool** through an interactive visualization of consensus and case-specific networks derived from viral infections and vaccination transcriptomic data.
+
+The dashboard includes 11 weighted gene networks, covering HIV, influenza, dengue, and their vaccination-associated responses.
+
+Users can interactively explore gene connectivity, inspect edge weights, identify central genes using degree, betweenness, closeness, and harmonic centrality, and filter network visualizations.
+
+**[Explore the Interactive Network Dashboard](https://valeriapolicastro.github.io/INet-Tool/)**
